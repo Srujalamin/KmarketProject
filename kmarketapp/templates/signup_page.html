@@ -1,50 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+
 {% load static %}
 
-<!-- Mirrored from demo.neptuneapp.xyz/demo-14/ltr/auth_signup_3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Sep 2022 05:41:13 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Neptune Auth Signup 3 | Neptune - Multipurpose Bootstrap Admin Dashboard Template</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}"/>
-    <!-- Common Styles Starts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/css/structure.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'plugins/highlight/styles/monokai-sublime.css' %}" rel="stylesheet" type="text/css" />
-    <!-- Common Styles Ends -->
-    <!-- Common Icon Starts -->
-    <link rel="stylesheet" href="../../../maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <!-- Common Icon Ends -->
-    <!-- Page Level Plugin/Style Starts -->
-    <link href="{% static 'assets/css/loader.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/css/authentication/auth_3.css' %}" rel="stylesheet" type="text/css">
-    <!-- Page Level Plugin/Style Ends -->
-</head>
-<body class="login-three" onload="Captcha();">
-    <!-- Loader Starts -->
-    <div id="load_screen"> 
-        <div class="boxes">
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-        </div>
-        <!-- <p class="neptune-loader-heading">Neptune</p> -->
-    </div>
-    <!--  Loader Ends -->
+{% block css %}
+<link href="{% static 'assets/css/authentication/auth_3.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block main_content %}    
     <!-- Main Body Starts -->
     <div class="container-fluid login-three-container">
         <div class="row main-login-three">
@@ -63,18 +25,28 @@
             </div>
             <div class="col-xl-5 col-lg-5 col-md-6">
                 <div class="d-flex flex-column justify-content-between h-100 right-area">
-                    <a class="btn btn-sm w-25 bg-gradient-primary text-white ml-auto"  href="auth_login_3.html">Login</a>
-                    <div>
+                    <a class="btn btn-sm w-25 bg-gradient-primary text-white ml-auto"  href="{% url 'login_page' %}">Login</a>
+                    <form method="post" action="{% url 'signup_page' %}">
+                        {% csrf_token %}
                         <div class="login-three-inputs mt-3">
-                            <input type="email" placeholder="Email">
+                            <input type="email" name="email" placeholder="Email">
                             <i class="las la-envelope"></i> 
                         </div>
                         <div class="login-three-inputs mt-3">
-                            <input type="password" placeholder="Password"> 
+                            <input type="password" name="password" placeholder="Password"> 
                             <i class="las la-lock"></i>
                         </div>
-                        <div class="capt mt-3"> 
-                            <div class="d-flex align-items-center justify-content-center">
+                        <div class="login-three-inputs mt-3 form-control">
+                            <div class="radio-inline text-capitalize">
+                                {% for role in user_roles %}
+                                <label class="radio">
+                                <input type="radio" name="user_role" value="{{role.id}}">
+                                <span></span>I am a {{role.Role}}</label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="capt mt-3 d-none">
+                            <div class="d-flex align-items-center justify-content-center ">
                                 <div class="captcha">
                                     <h2 type="text" id="mainCaptcha"></h2>
                                 </div>
@@ -103,9 +75,9 @@
                             </label>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4">
-                            <button class="text-white btn bg-gradient-primary">Sign up</button>
+                            <button type="submit" class="text-white btn bg-gradient-primary">Sign up</button>
                         </div>
-                    </div>
+                    </form>
                     <div class="login-three-social social-logins mt-4">
                         <div class="social-btn bg-gradient-primary">
                             <a href="#" class="fb-btn">
@@ -128,13 +100,8 @@
         </div>  
     </div>
     <!-- Main Body Ends -->    
-    <!-- Page Level Plugin/Script Starts -->
-    <script src="{% static 'assets/js/loader.js' %}"></script>
-    <script src="{% static 'assets/js/libs/jquery-3.1.1.min.js' %}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/authentication/auth_2.js' %}"></script>
-    <!-- Page Level Plugin/Script Ends -->
-</body>
+{% endblock %}
 
-<!-- Mirrored from demo.neptuneapp.xyz/demo-14/ltr/auth_signup_3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Sep 2022 05:41:13 GMT -->
-</html>
+{% block scripts %}
+<script src="{% static 'assets/js/authentication/auth_2.js' %}"></script>
+{% endblock %}
