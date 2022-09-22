@@ -106,7 +106,7 @@
                         </a>
                     </li>
                     <li class="menu">
-                        <a href="auth_login_1.html" data-original-title="Logout" data-placement="right" class="dropdown-toggle bs-tooltip">
+                        <a href="{% url 'logout' %}" data-original-title="Logout" data-placement="right" class="dropdown-toggle bs-tooltip">
                             <i class="las la-sign-out-alt"></i>
                         </a>
                     </li>
@@ -1001,7 +1001,7 @@
                                                 </div>
                                             </a>
                                             <hr class="account-divider">
-                                            <a class="account-item" href="auth_login_3.html">
+                                            <a class="account-item" href="{% url 'logout' %}">
                                                 <div class="media align-center">
                                                     <div class="icon-wrap">
                                                         <i class="las la-sign-out-alt font-20"></i>
@@ -1060,8 +1060,13 @@
                                 </a>
                             </div>
                             <div class="info-area">
-                                <h6>Sara Williamson</h6>
-                                <p>Data Analyst</p>
+                                {% if profile_data.FullName %}
+                                    <h6>{{profile_data.FullName}}</h6>
+                                {% else %}
+                                    <h6>Guest</h6>
+                                {% endif %}
+                                <!-- <p>Data Analyst</p> -->
+                                <p>{{profile_data.Master.Email}}</p>
                                 <button>Follow</button>
                             </div>
                             <div class="profile-numbers">
