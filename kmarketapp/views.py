@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.shortcuts import redirect, render
 from .models import *
 
@@ -27,20 +28,23 @@ def profile_page(request):
 # signup functionality
 def signup(request):
     print(request.POST)
+    
+    try:
+        user_role = UserRole.objects.get(id=int(request.POST['user_role']))
 
-    user_role = UserRole.objects.get(id=int(request.POST['user_role']))
+        # ORM - Object Relational Mapping
+        master = Master.objects.create(
+            UserRole = user_role,
+            Email = request.POST['email'],
+            Password = request.POST['password'],
+        )
 
-    # ORM - Object Relational Mapping
-    master = Master.objects.create(
-        UserRole = user_role,
-        Email = request.POST['email'],
-        Password = request.POST['password'],
-    )
-
-    UserProfile.objects.create(
-        Master = master,
-    )
-
+        UserProfile.objects.create(
+            Master = master,
+        )
+    except IntegrityError as err:
+        print(err)
+        
     return redirect(signup_page)
 
 # profile data
