@@ -6,6 +6,9 @@ default_data = {
     'user_roles': UserRole.objects.all(),
 }
 
+def profile_page_edit(request):
+    return render(request, "profile_page_edit.html", default_data)
+
 def signup_page(request):
     return render(request, "signup_page.html", default_data)
 
@@ -53,6 +56,7 @@ def profile_data(request):
     profile = UserProfile.objects.get(Master = master)
 
     default_data['profile_data'] = profile
+
 
 # profile update functionality
 def profile_update(request):

@@ -420,7 +420,7 @@
                             <a href="pages_profile.html"> Profile </a>
                         </li>
                         <li>
-                            <a href="pages_profile_edit.html"> Profile Edit </a>
+                            <a href="{% url 'profile_page_edit' %}"> Profile Edit </a>
                         </li>
                         <li>
                             <a href="pages_search_result.html"> Search Result </a>
@@ -1055,7 +1055,7 @@
                         <div class="profile-left">
                             <div class="image-area">
                                 <img class="user-image" src="{% static 'assets/img/profile-16.jpg' %}">
-                                <a href="pages_profile_edit.html" class="follow-area">
+                                <a href="{% url 'profile_page_edit' %}" class="follow-area">
                                     <i class="las la-pen"></i>
                                 </a>
                             </div>
@@ -1092,7 +1092,7 @@
                             <div class="profile-tabs">
                                 <div class="nav flex-column nav-pills mb-sm-0 mb-3 mx-auto" id="v-border-pills-tab" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active" id="v-border-pills-home-tab" data-toggle="pill" href="#v-border-pills-home" role="tab" aria-controls="v-border-pills-home" aria-selected="true">Home</a>
-                                    <a class="nav-link" id="v-border-pills-team-tab" data-toggle="pill" href="#v-border-pills-team" role="tab" aria-controls="v-border-pills-team" aria-selected="false">Team</a>
+                                    <a class="nav-link" id="v-border-pills-team-tab" data-toggle="pill" href="#v-border-pills-team" role="tab" aria-controls="v-border-pills-team" aria-selected="false">profile Edit</a>
                                     <a class="nav-link" id="v-border-pills-work-tab" data-toggle="pill" href="#v-border-pills-work" role="tab" aria-controls="v-border-pills-work" aria-selected="false">Work in progress</a>
                                     <a class="nav-link" id="v-border-pills-products-tab" data-toggle="pill" href="#v-border-pills-products" role="tab" aria-controls="v-border-pills-products" aria-selected="false">Products</a>
                                     <a class="nav-link" id="v-border-pills-orders-tab" data-toggle="pill" href="#v-border-pills-orders" role="tab" aria-controls="v-border-pills-orders" aria-selected="false">Orders</a>

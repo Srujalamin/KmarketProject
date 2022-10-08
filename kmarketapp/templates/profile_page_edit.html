@@ -1,50 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<!-- Mirrored from demo.neptuneapp.xyz/demo-14/ltr/pages_profile_edit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Sep 2022 05:41:14 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Neptune Profile Edit | Neptune - Multipurpose Bootstrap Admin Dashboard Template </title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-    <!-- Common Styles Starts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/structure.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/highlight/styles/monokai-sublime.css" rel="stylesheet" type="text/css" />
-    <!-- Common Styles Ends -->
-    <!-- Common Icon Starts -->
-    <link rel="stylesheet" href="../../../maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <!-- Common Icon Ends -->
-    <!-- Page Level Plugin/Style Starts -->
-    <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
-    <link href="assets/css/pages/profile_edit.css" rel="stylesheet" type="text/css" />
-    <!-- Page Level Plugin/Style Ends -->
-</head>
-<body>
-    <!-- Loader Starts -->
-    <div id="load_screen"> 
-        <div class="boxes">
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="box">
-                <div></div><div></div><div></div><div></div>
-            </div>
-        </div>
-        <!-- <p class="neptune-loader-heading">Neptune</p> -->
-    </div>
-    <!--  Loader Ends -->
+{% load static %}
+
+{% block css %}
+<link href="{% static 'assets/css/pages/profile_edit.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/dropify/dropify.min.css' %}">
+{% endblock %}
+
+{% block main_content %}
+
     <!--  Main Container Starts  -->
     <div class="main-container" id="container">
         <div class="overlay"></div>
@@ -55,7 +19,7 @@
             <nav id="sidebar">
                 <div class="d-flex flex-row align-center justify-content-center logo-area">
                     <a href="index-2.html">
-                        <img src="assets/img/logo.png" class="navbar-logo" alt="logo">
+                        <img src="{% static 'assets/img/logo.png' %}" class="navbar-logo" alt="logo">
                     </a>
                     <!-- <a href="index.html" class="nav-link"> Neptune </a> -->
                 </div>
@@ -140,7 +104,7 @@
                 <ul class="list-unstyled menu-categories fixed-bottom-menu">
                     <li class="menu">
                         <a href="pages_profile.html" data-original-title="Profile" data-placement="right" class="main-item bs-tooltip">
-                            <img src="assets/img/profile-16.jpg" alt="avatar">
+                            <img src="{% static 'assets/img/profile-16.jpg' %}" alt="avatar">
                         </a>
                     </li>
                     <li class="menu">
@@ -1932,25 +1896,23 @@ Acquiring data from primary or secondary data sources and maintaining databases.
         <!--  Rightbar Area Ends -->
     </div>
     <!-- Main Container Ends -->
+{% endblock %}
+    
+{% block scripts %}
     <!-- Common Script Starts -->
-    <script src="assets/js/libs/jquery-3.1.1.min.js"></script>
-    <script src="bootstrap/js/popper.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{% static 'bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
     <script>
         $(document).ready(function() {
             App.init();
         });
     </script>
-    <script src="assets/js/custom.js"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
     <!-- Common Script Ends -->
     <!--  Custom Script Starts  -->
-    <script src="assets/js/loader.js"></script>
-    <script src="plugins/dropify/dropify.min.js"></script>
-    <script src="assets/js/pages/profile_edit.js"></script>
+    <script src="{% static 'plugins/dropify/dropify.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/profile_edit.js' %}"></script>
     <!--  Custom Script Ends  -->
-</body>
+{% endblock %}
 
-<!-- Mirrored from demo.neptuneapp.xyz/demo-14/ltr/pages_profile_edit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Sep 2022 05:41:15 GMT -->
-</html>
